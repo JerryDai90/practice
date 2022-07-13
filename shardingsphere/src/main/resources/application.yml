@@ -1,0 +1,67 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: @profileActive@
+  shardingsphere:
+#    datasource:
+#      names: master,slave0
+#      master:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://175.178.221.101:3307/demo?useUnicode=true&useSSL=false&characterEncoding=utf8
+#        username: root
+#        password: kinth@2021
+#      slave0:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbc-url: jdbc:mysql://175.178.221.101:3306/demo?useUnicode=true&useSSL=false&characterEncoding=utf8
+#        username: root
+#        password: kinth@2021
+#    masterslave:
+#      load-balance-algorithm-type: round_robin
+#      name: ms
+#      master-data-source-name: master
+#      slave-data-source-names: slave0
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://${database.ds0.url}?useUnicode=true&useSSL=false&characterEncoding=utf8
+        username: root
+        password: ${database.ds0.pwd}
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://${database.ds1.url}?useUnicode=true&useSSL=false&characterEncoding=utf8
+        username: root
+        password: ${database.ds1.pwd}
+    sharding:
+      tables:
+        bs_message:
+          actual-data-nodes: ds$->{0..1}.bs_message$->{0..1}
+          table-strategy:
+            inline:
+              #这里分片可以是表中的任何一个字段，如果是取模运算的，需要是数值类型的
+              sharding-column: msg_id
+              #这里计算的变量必须是分片的字段(sharding-column) 有的字段
+              algorithm-expression: bs_message$->{msg_id % 2}
+          key-generator:
+            column: msg_id
+            type: SNOWFLAKE
+      binding-tables: bs_message
+#      broadcast-tables: t_config
+      default-database-strategy:
+        # 依据用户来判断走
+        inline:
+          sharding-column: user_id
+          algorithm-expression: ds$->{user_id % 2}
+    props:
+      sql:
+        show: true
+mybatis-plus:
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.practice.shardingsphere.model.entity
+  mapper-locations: classpath*:mapper/*.xml
