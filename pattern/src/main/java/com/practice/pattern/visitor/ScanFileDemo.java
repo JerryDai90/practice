@@ -1,6 +1,8 @@
 package com.practice.pattern.visitor;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 public class ScanFileDemo {
 
@@ -14,7 +16,6 @@ public class ScanFileDemo {
         scanFile.scan(new File("/Users/jerry/Private/999_self/1_code/practice/pattern"), javaVisitor);
 
         scanFile.scan(new File("/Users/jerry/Private/999_self/1_code/practice/pattern"), classVisitor);
-
     }
 
 }

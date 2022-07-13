@@ -43,16 +43,13 @@ class Singleton2 {
     private Singleton2() {
         if (null == instance) {
             synchronized (Singleton2.class) {
-                if (null == instance) {
-                    instance = new Singleton2();
+                if (null == instance) {           //1
+                    instance = new Singleton2();  //2
                 }
             }
         }
     }
-
     public static Singleton2 getInstance() {
         return instance;
     }
-
-
 }
