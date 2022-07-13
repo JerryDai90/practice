@@ -6,6 +6,11 @@
 	<modules>
 		<module>java-nio</module>
         <module>pattern</module>
+        <module>juc</module>
+        <module>jvm</module>
+        <module>lang</module>
+        <module>rocketmq</module>
+        <module>shardingsphere</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -32,6 +37,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.7.22</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
