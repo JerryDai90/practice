@@ -10,20 +10,21 @@ spring:
 #      master:
 #        type: com.zaxxer.hikari.HikariDataSource
 #        driver-class-name: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://175.178.221.101:3307/demo?useUnicode=true&useSSL=false&characterEncoding=utf8
+#        jdbc-url: jdbc:mysql://${database.ds0.url}?useUnicode=true&useSSL=false&characterEncoding=utf8
 #        username: root
-#        password: kinth@2021
+#        password: ${database.ds0.pwd}
 #      slave0:
 #        type: com.zaxxer.hikari.HikariDataSource
 #        driver-class-name: com.mysql.cj.jdbc.Driver
-#        jdbc-url: jdbc:mysql://175.178.221.101:3306/demo?useUnicode=true&useSSL=false&characterEncoding=utf8
+#        jdbc-url: jdbc:mysql://${database.ds1.url}?useUnicode=true&useSSL=false&characterEncoding=utf8
 #        username: root
-#        password: kinth@2021
+#        password: ${database.ds1.pwd}
 #    masterslave:
 #      load-balance-algorithm-type: round_robin
 #      name: ms
 #      master-data-source-name: master
 #      slave-data-source-names: slave0
+
     datasource:
       names: ds0,ds1
       ds0:

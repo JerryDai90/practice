@@ -9,6 +9,7 @@
         <module>juc</module>
         <module>jvm</module>
         <module>lang</module>
+		<module>rabbitmq</module>
         <module>rocketmq</module>
         <module>shardingsphere</module>
     </modules>
