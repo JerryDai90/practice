@@ -1,9 +1,8 @@
-package com.practice.rabbitmq.deadletter.direct;
+package com.practice.rabbitmq.direct;
 
-import com.practice.rabbitmq.deadletter.Utils;
+import com.practice.rabbitmq.Utils;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

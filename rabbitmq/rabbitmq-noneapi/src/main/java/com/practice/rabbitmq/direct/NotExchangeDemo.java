@@ -1,6 +1,6 @@
-package com.practice.rabbitmq.deadletter.direct;
+package com.practice.rabbitmq.direct;
 
-import com.practice.rabbitmq.deadletter.Utils;
+import com.practice.rabbitmq.Utils;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class NotExchangeDemo {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println("1 [x] Received '" + message + "'");
+                System.out.println("[x] Received '" + message + "'");
 
                 //确认
                 channel.basicAck(envelope.getDeliveryTag(), true);

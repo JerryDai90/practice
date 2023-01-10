@@ -1,6 +1,6 @@
-package com.practice.rabbitmq.deadletter.pubsub;
+package com.practice.rabbitmq.pubsub;
 
-import com.practice.rabbitmq.deadletter.Utils;
+import com.practice.rabbitmq.Utils;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;

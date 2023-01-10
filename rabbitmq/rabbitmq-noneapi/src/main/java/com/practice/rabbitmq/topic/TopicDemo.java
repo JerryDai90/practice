@@ -1,6 +1,6 @@
-package com.practice.rabbitmq.deadletter.topic;
+package com.practice.rabbitmq.topic;
 
-import com.practice.rabbitmq.deadletter.Utils;
+import com.practice.rabbitmq.Utils;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
