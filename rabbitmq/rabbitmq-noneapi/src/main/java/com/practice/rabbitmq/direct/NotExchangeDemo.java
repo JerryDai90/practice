@@ -24,7 +24,7 @@ public class NotExchangeDemo {
         //必须要先定义队列，无论是接受还是发送
         AMQP.Queue.DeclareOk declareOk = channel.queueDeclare(single_queue, true, false, false, null);
 
-        channel.basicPublish("", "queue1", null, "test".getBytes());
+        channel.basicPublish("", single_queue, null, "test".getBytes());
 
         Consumer consumer = new DefaultConsumer(channel){
             @Override
