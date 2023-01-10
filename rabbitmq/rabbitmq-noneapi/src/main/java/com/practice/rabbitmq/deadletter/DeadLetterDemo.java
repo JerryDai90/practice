@@ -55,7 +55,9 @@ public class DeadLetterDemo {
                 String message = new String(body, "UTF-8");
                 System.out.println("[Reject] '" + message + "'");
                 //确认
-                channel.basicNack(envelope.getDeliveryTag(), false, false);
+                channel.basicReject(envelope.getDeliveryTag(),  false);
+                //or
+//                channel.basicNack(envelope.getDeliveryTag(),  false,false);
             }
         };
         channel.basicConsume(business_queue, bsConsumer);
